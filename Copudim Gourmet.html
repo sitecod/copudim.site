@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Copudim Gourmet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf3e6;--surface:#fff9f0;--ink:#3b2208;--muted:#7a5b3a;--brand:#502d0e;--accent:#d9a441;--line:#e8d3b3;--tab-on:#502d0e;--tab-ink:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#22130a;--surface:#33200f;--ink:#fbf0df;--muted:#cdb28f;--line:#4d3320;--tab-on:#e8b75a;--tab-ink:#2a1708}}
+:root[data-theme="dark"]{--bg:#22130a;--surface:#33200f;--ink:#fbf0df;--muted:#cdb28f;--line:#4d3320;--tab-on:#e8b75a;--tab-ink:#2a1708}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Poppins',system-ui,sans-serif;line-height:1.6}
+.hero{background:#502d0e;color:#fff;text-align:center;padding:48px 20px 64px}
+.ring{width:min(340px,82vw);aspect-ratio:1;margin:0 auto 20px;border:6px dotted #fff;border-radius:50%;display:grid;place-items:center;padding:24px}
+.ring svg{width:70%;height:auto}
+h1{font-family:'Fredoka',system-ui,sans-serif;font-weight:500;font-size:clamp(2.6rem,10vw,4rem);margin:0;line-height:1;letter-spacing:.08em}
+.sub{letter-spacing:.5em;font-weight:300;font-size:.8rem;margin:8px 0 18px;padding-left:.5em}
+.lead{max-width:420px;margin:0 auto 26px;color:#f1e3cf}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 24px;border-radius:999px;font-weight:600;text-decoration:none;font-size:.95rem;border:2px solid #fff}
+.btn.solid{background:#fff;color:#502d0e}
+.btn.ghost{color:#fff}
+section{max-width:720px;margin:0 auto;padding:56px 20px}
+h2{font-family:'Fredoka',system-ui,sans-serif;font-weight:500;font-size:2rem;text-align:center;margin:0 0 6px;color:var(--ink)}
+.note{text-align:center;color:var(--muted);margin:0 0 24px;font-size:.92rem}
+.tabs{display:flex;gap:8px;justify-content:center;margin-bottom:20px}
+.tab{font:inherit;font-weight:600;padding:10px 22px;border-radius:999px;border:2px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--tab-on);color:var(--tab-ink);border-color:var(--tab-on)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:8px 20px}
+ul{list-style:none;margin:0;padding:0}
+li{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px dashed var(--line)}
+li:last-child{border-bottom:0}
+.name{flex:1;font-weight:500}
+.price{font-family:'Fredoka',system-ui,sans-serif;font-weight:600;font-size:1.1rem;white-space:nowrap}
+.pedir{font-size:.8rem;font-weight:600;text-decoration:none;padding:6px 14px;border-radius:999px;background:var(--accent);color:#2a1708}
+.contact{text-align:center}
+.contact .card{padding:28px 20px}
+.contact a.link{color:var(--ink);font-weight:600}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 20px 40px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="ring">
+    <svg viewBox="0 0 200 150" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Pudim sorridente">
+      <ellipse cx="100" cy="112" rx="88" ry="22"/>
+      <path d="M62 108 L80 28 L128 28 L142 108 Q102 120 62 108Z"/>
+      <path d="M80 28 Q86 38 94 34 Q102 44 108 34 Q118 40 124 32 L128 28" stroke-width="3"/>
+      <path d="M84 70 q6-8 12 0M112 70 q6-8 12 0M98 82 q6 7 12 0"/>
+    </svg>
+  </div>
+  <h1>Copudim</h1>
+  <p class="sub">GOURMET</p>
+  <p class="lead">Pudins em copo e em pote, para adoçar o seu dia.</p>
+  <div class="btns">
+    <a class="btn solid" href="#cardapio">Ver cardápio</a>
+    <a class="btn ghost" id="wa-hero" href="#">Pedir no WhatsApp</a>
+  </div>
+</header>
+
+<section id="cardapio">
+  <h2>Escolha seu pudim</h2>
+  <p class="note">Toque em “Pedir” para enviar o pedido pelo WhatsApp.</p>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" data-k="copo" aria-selected="true">Copo 150 ml</button>
+    <button class="tab" role="tab" data-k="pote" aria-selected="false">Pote 145 ml</button>
+  </div>
+  <div class="card" id="panels"></div>
+</section>
+
+<section class="contact" id="contato">
+  <h2>Faça seu pedido</h2>
+  <p class="note">Fale com a gente pelo WhatsApp ou acompanhe as novidades no Instagram.</p>
+  <div class="card">
+    <p style="margin:0 0 4px">Telefone / WhatsApp</p>
+    <p style="margin:0 0 18px"><a class="link" id="tel" href="tel:+5544999472824">(44) 99947-2824</a></p>
+    <div class="btns">
+      <a class="btn solid" id="wa" href="#" style="background:var(--tab-on);color:var(--tab-ink);border-color:var(--tab-on)">Chamar no WhatsApp</a>
+      <a class="btn ghost" href="https://instagram.com/copudim_oficial" target="_blank" rel="noopener" style="color:var(--ink);border-color:var(--line)">@copudim_oficial</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Copudim Gourmet · @copudim_oficial</footer>
+
+<script>
+const WA='5544999472824';
+const rest=(n,a,b)=>n==='Tradicional'||n==='Café'||n==='Ninho'?a:b;
+const names=['Tradicional','Café','Ninho','Doce de Leite','Ninho c/ Ganache de Nutella','Chocolate','Chocolate Branco c/ Geleia de Morango','Zero Açúcar'];
+const menu={
+  copo:{label:'copo 150 ml',items:names.map(n=>[n,rest(n,13,15)])},
+  pote:{label:'pote 145 ml',items:names.map(n=>[n,n==='Tradicional'?10:12])}
+};
+const link=t=>'https://wa.me/'+WA+(t?'?text='+encodeURIComponent(t):'');
+const money=v=>'R$ '+v.toFixed(2).replace('.',',');
+const panels=document.getElementById('panels');
+Object.entries(menu).forEach(([k,m],i)=>{
+  const ul=document.createElement('ul');ul.dataset.k=k;ul.hidden=i>0;
+  m.items.forEach(([n,p])=>{
+    const li=document.createElement('li');
+    const a=document.createElement('span');a.className='name';a.textContent=n;
+    const b=document.createElement('span');b.className='price';b.textContent=money(p);
+    const c=document.createElement('a');c.className='pedir';c.textContent='Pedir';c.target='_blank';c.rel='noopener';
+    c.href=link('Olá! Quero um pudim '+n+' ('+m.label+').');
+    li.append(a,b,c);ul.append(li);
+  });
+  panels.append(ul);
+});
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===t));
+  panels.querySelectorAll('ul').forEach(u=>u.hidden=u.dataset.k!==t.dataset.k);
+}));
+['wa','wa-hero'].forEach(id=>{const e=document.getElementById(id);e.href=link('Olá! Gostaria de fazer um pedido.');e.target='_blank';e.rel='noopener'});
+</script>
+</body>
+</html>
